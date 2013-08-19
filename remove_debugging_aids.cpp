@@ -1,4 +1,4 @@
-#define DIBUG
+#define DEBUG
 ...
 #if defined( DEBUG )
 // debugging cod
