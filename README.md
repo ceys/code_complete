@@ -1,4 +1,4 @@
 code_complete
 =============
 
-<code complete> note
+note of code complete
