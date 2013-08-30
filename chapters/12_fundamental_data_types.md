@@ -26,11 +26,11 @@
 * 用布尔变量对程序加以文档说明
 * 用布尔变量来简化复杂判断：
 
-	finished = (( elementIndex < 0 || ( MAX_ELEMENTS < elementIndex ));
-	repeatedEntry = ( elementIndex == lastElementIndex );
-	if ( finished || repeatedEntry ) {
-		...
-	}
+		finished = (( elementIndex < 0 || ( MAX_ELEMENTS < elementIndex ));
+		repeatedEntry = ( elementIndex == lastElementIndex );
+		if ( finished || repeatedEntry ) {
+			...
+		}
 
 ### 具名常量
 
