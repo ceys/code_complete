@@ -20,3 +20,27 @@
 * 用null初始化字符串一避免无结束符的字符串。 `char EventName [NAME_LENGTH + 1] = {0};`
 * 如果内存不是问题，用字符数组取代C中的指针。
 * 用strncpy()取代strcpy()以避免无结束符的字符串。
+
+### 布尔变量
+
+* 用布尔变量对程序加以文档说明
+* 用布尔变量来简化复杂判断：
+	finished = (( elementIndex < 0 || ( MAX_ELEMENTS < elementIndex ));
+	repeatedEntry = ( elementIndex == lastElementIndex );
+	if ( finished || repeatedEntry ) {
+		...
+	}
+
+### 具名常量
+
+* 在数据声明中使用具名常量
+* 用具有适当作用域的变量或类来模拟具名常量
+* 统一地使用具名常量
+
+### 数组
+
+* 确认所有数组下标都没有超出数组的边界
+* 考虑用容器替代数组，或者将数组作为顺序化结构来处理
+* 检查数组的边界点
+* 如果数组是多维的确认下标的使用顺序是正确的
+* 提防下标串话
