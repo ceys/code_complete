@@ -5,3 +5,43 @@
 * 用结构体简化对数据块的操作
 * 用结构体简化参数列表
 * 用结构体来减少维护
+
+###指针
+* 指针包含两部分内容：内存中的位置，如何解释指针所指的内容
+* 把指针操作限制在子程序或者类里边：减少访问指针代码位置的数量。
+* 同时声明和定义指针：`Employee * emplyeePtr = new Employee`
+* 在与指针分配相同的作用域删除指针。
+* 在使用指针之前检查指针
+* 先检查指针所引用的变量再使用它
+* 利用tag field来检测损毁的内存：tag field是指加入结构体内的一个仅仅用于检测错误的字段。在分配一个变量的时候，
+把一个应该保持不变的值放在它的标记字段里。当你使用该结构时，特别是当你释放其内存时，检测这个标记字段的取值。
+如果这个标记字段的取值与预期不符，那么这一数据就遭到破坏了。
+* 用额外的指针变量来提高代码清晰度：
+		//传统的插入节点的代码
+		void InsertLink (
+			Node *currentNode,
+			Node *insertNode
+			) {
+			insertNode->next = currentNode->next;
+			insertNode->previous = currentNode;
+			if ( currentNode->next != NULL ) {
+				currentNode->next->previous = insertNode;
+			}
+			currentNode->next = insertNode;
+		}
+
+		//更具可读性的节点插入代码
+		void InsertLink ( Node *startNode, Node *newMiddleNode ) {
+			Node *followingNode = startNode->next;
+			newMiddleNode->next = folowingNode;
+			newMiddleNode->previous = startNode;
+			if ( followingNode != NULL ) {
+				followingNode->previous = newMiddleNode;
+			}
+			startNode->next = newMiddleNode;
+		}
+* 简化复杂的指针表达式
+* 画一个图，来解释指针链接关系
+* 按照正确的顺序删除链表中的指针
+* 分配一片保留的内存后备区域，一旦用光了内存，就释放保留下来的这片后备区，保存所做的工作并执行清理工作。
+* 粉碎垃圾数据，在释放内存前用垃圾数据覆盖这些内存区域，并把指针设为空值：`memset( pointer, GARBAGE_DATA, MemoryBlockSize(pointer) ); delete pointer; pointer = NULL;`
